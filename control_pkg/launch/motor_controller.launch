@@ -1,0 +1,22 @@
+<launch>
+  	<node pkg="control_pkg" type="motor_controller" name="motor_controller">
+		
+		<param name = "Motor_param/R_F_min" value = "1595"/>
+		<param name = "Motor_param/R_B_min" value = "1455"/>
+		<param name = "Motor_param/R_F_limit" value = "1650"/>
+		<param name = "Motor_param/R_B_limit" value = "1300"/>
+
+		<param name = "Motor_param/L_F_min" value = "1590"/>
+		<param name = "Motor_param/L_B_min" value = "1481"/>
+		<param name = "Motor_param/L_F_limit" value = "1650"/>
+		<param name = "Motor_param/L_B_limit" value = "1350"/>
+	</node>
+
+  	<!--node pkg="control_pkg" type="drive_algo" name="drive_algo">
+		<param name = "/control_param/a" value = "30"/>
+		<param name = "/control_param/b" value = "0"/>
+		<param name = "/control_param/c" value = "5"/>
+		<param name = "/control_param/d" value = "0"/>
+	</node-->
+</launch>
+ 

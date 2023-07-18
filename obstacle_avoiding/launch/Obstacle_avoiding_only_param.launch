@@ -1,0 +1,6 @@
+<launch>
+    
+	<param name="Standard_DR" value="-42.0"/>
+	<param name="Visibility" value="1.0"/>
+    
+</launch>

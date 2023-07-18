@@ -1,0 +1,46 @@
+
+
+<launch>
+  <!--node pkg="rosserial_python" type="serial_node.py" name="serial_node">
+    <param name="port" value="/dev/ttyARDU"/>
+    <param name="baud" value="57600"/>
+    <param name="auto_pilot_mode" value="0"/>
+    <param name="led_enable" value ="0"/>
+    <param name="Right_motor" value = "1500"/>
+    <param name="Left_motor" value = "1500"/>
+  </node-->
+
+  
+	<include file="$(find imu_filter_madgwick)/launch/imu_filter_madgwick.launch" />
+	
+  
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+    <param name="serial_port"         type="string" value="/dev/ttyRIDAR"/>  
+    <param name="serial_baudrate"     type="int"    value="256000"/><!--A3 -->
+    <param name="frame_id"            type="string" value="laser"/>
+    <param name="inverted"            type="bool"   value="false"/>
+    <param name="angle_compensate"    type="bool"   value="true"/>
+    <param name="scan_mode"           type="string" value="Stability"/>
+  </node>
+ 
+
+
+  <node pkg="wit_driver" type="wit_driver_node" name="wit_node" output="screen">
+    <param name="port" value="ttyIMU"/>
+    <param name="baudrate" value="9600"/>
+    <param name="publish_rate" value="100"/>  <!--origin = 20-->
+    <param name="publish_mag" value="true"/>
+    <param name="imu_topic" value="/imu/data_raw"/>
+    <param name="mag_topic" value="/imu/mag"/>
+    <param name="imu_frame" value="imu_link"/>
+  </node>
+
+  <node pkg="tf_echo_publisher" type="tf_echo_publisher" name="tf_echo_publisher"/>
+  <!--node pkg="control_pkg" type="motor_controller" name="motor_controller" /-->
+  
+  <!--testing -->
+	<!--node pkg="obstacle_detector" type="wallfinder" name="wallfinder" /-->
+	<!--node pkg="obstacle_detector" type="obstacle_detector" name="obstacle_detector" /-->  
+
+
+</launch>
